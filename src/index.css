@@ -14,12 +14,41 @@
 	margin-inline: auto;
 }
 
+/* Hide the nav links for screen smaller than 647px */
+@media (max-width: 647px) {
+	/* Stack the nav link list on top of each other */
+	/* Position it outside the viewport */
+	.nav-links ul {
+		background-color: black;
+		flex-direction: column;
+		position: absolute;
+		top: -1000px;
+		right: 10px;
+		padding: 20px 40px;
+		z-index: 1;
+	}
+
+	/* Add border bottom to the list */
+	.nav-links ul li {
+		border-bottom: 1px solid gray;
+	}
+
+	/* Class to add when hamburger menu is clicked */
+	/* Positions the nav link lists the right way */
+	ul.active {
+		top: 100px;
+	}
+
+	.hamburger-icon {
+		cursor: pointer;
+	}
+}
+
 /* Screen size greater than 647px */
 @media (min-width: 647px) {
 	.container {
 		max-width: 648px;
 	}
-
 }
 
 /* Screen size greater than 768px */
