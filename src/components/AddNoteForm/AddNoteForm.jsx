@@ -1,5 +1,7 @@
 import React from "react";
-import "./AddNoteForm.css"
+import "./AddNoteForm.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlus } from "@fortawesome/free-solid-svg-icons";
 
 function AddNoteForm() {
 	return (
@@ -10,6 +12,9 @@ function AddNoteForm() {
 					<input type="text" name="title" placeholder="Title" />
 					<br />
 					<textarea placeholder="Content" />
+					<button className="add-icon">
+						<FontAwesomeIcon icon={faPlus} />
+					</button>
 				</form>
 			</div>
 		</>
