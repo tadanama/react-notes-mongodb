@@ -6,7 +6,7 @@ import { faPlus } from "@fortawesome/free-solid-svg-icons";
 function AddNoteForm() {
 	return (
 		<>
-			<div className="form-container">
+			<div className="add-form-container">
 				<h1>Create a note</h1>
 				<form>
 					<input type="text" name="title" placeholder="Title" />
