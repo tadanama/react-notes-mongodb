@@ -29,6 +29,7 @@
 .nav-links ul{
     display: flex;
     gap: 20px;
+    font-size: 20px;
 }
 
 /* Remove list style */
