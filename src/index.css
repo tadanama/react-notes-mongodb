@@ -13,3 +13,32 @@
 	min-height: 100vh;
 	margin-inline: auto;
 }
+
+/* Screen size greater than 647px */
+@media (min-width: 647px) {
+	.container {
+		max-width: 648px;
+	}
+
+}
+
+/* Screen size greater than 768px */
+@media (min-width: 768px) {
+	.container {
+		max-width: 768px;
+	}
+}
+
+/* Screen size greater than 1024px */
+@media (min-width: 1024px) {
+	.container {
+		max-width: 1024px;
+	}
+}
+
+/* Screen size greater than 1280px */
+@media (min-width: 1280px) {
+	.container {
+		max-width: 1280px;
+	}
+}
