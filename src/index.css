@@ -49,6 +49,16 @@
 	.container {
 		max-width: 648px;
 	}
+
+	/* Display the link normally*/
+	.nav-links {
+		display: flex;
+	}
+
+	/* Hide the icon */
+	.hamburger-icon {
+		display: none;
+	}
 }
 
 /* Screen size greater than 768px */
