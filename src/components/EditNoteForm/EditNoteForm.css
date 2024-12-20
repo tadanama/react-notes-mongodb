@@ -1,23 +1,46 @@
 /* Center the form */
-.form-container {
+.edit-form-container {
 	border: 1px solid blue;
 	padding: 30px 20px;
 	max-width: 50%;
 	margin-inline: auto;
+	margin-top: 50px;
 }
 
-.form-container h1 {
+.edit-form-container h1 {
 	margin-bottom: 20px;
 }
 
-.form-container input,
-.form-container textarea {
+.edit-form-container input,
+.edit-form-container textarea {
 	width: 100%;
 	font-size: 16px;
 	padding: 5px 10px;
 }
 
-.form-container textarea {
+.edit-form-container textarea {
 	resize: none;
 	min-height: 300px;
+}
+
+.edit-form-container form{
+	position: relative;
+}
+
+button.save-icon{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    border-radius: 50px;
+    font-size: 30px;
+    border: none;
+    background-color: black;
+    color: white;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+button.save-icon:hover{
+    background-color: #008CBA;
 }
