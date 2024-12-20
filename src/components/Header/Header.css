@@ -10,7 +10,7 @@
 }
 
 /* Increase h1 font size */
-h1 {
+.header-container h1 {
     font-size: 50px;
     font-style: italic;
 }
