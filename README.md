@@ -1,0 +1,1 @@
+# Simple frontend for a notes app
