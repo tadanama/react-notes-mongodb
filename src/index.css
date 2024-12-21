@@ -8,7 +8,7 @@
 }
 
 .container {
-	border: 2px solid red;
+	/* border: 2px solid red; */
 	max-width: 1536px;
 	min-height: 100vh;
 	margin-inline: auto;
