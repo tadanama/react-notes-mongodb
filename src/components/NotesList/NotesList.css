@@ -1,0 +1,68 @@
+.notes-container {
+	max-width: 90%;
+	margin-inline: auto;
+	padding: 20px;
+	border: 1px solid green;
+}
+
+.notes-container h2 {
+	margin-top: 10px;
+	margin-bottom: 50px;
+}
+
+.notes-grid-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 300px));
+	justify-content: center;
+	gap: 20px;
+}
+
+.note-card {
+    padding: 10px;
+	border-radius: 10px;
+	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.note-card h3,
+.note-card p {
+	margin-bottom: 10px;
+}
+
+.note-card p {
+    font-size: 15px;
+}
+
+.note-card:hover{
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.note-card .bottom {
+	display: flex;
+	justify-content: space-between;
+    align-items: center;
+}
+
+.note-card .bottom span {
+	font-size: 14px;
+	color: gray;
+}
+
+.note-card .bottom button.delete-icon {
+	padding: 5px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    background-color: transparent;
+    color: #f44336;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.note-card .bottom button.delete-icon:hover{
+    color: white;
+    background-color: #f44336;
+}
+
+/* event.stopPropogation() */
