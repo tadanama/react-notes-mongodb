@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import "./Header.css";
@@ -21,8 +22,12 @@ function Header() {
 			/>
 			<div className="nav-links">
 				<ul className={isOpen ? "active" : null}>
-					<li>Create note</li>
-					<li>My notes</li>
+					<Link to={"/note"}>
+						<li>Create note</li>
+					</Link>
+					<Link to={"/"}>
+						<li>My notes</li>
+					</Link>
 				</ul>
 			</div>
 			<div className="hamburger-icon" onClick={() => setIsOpen(!isOpen)}>
