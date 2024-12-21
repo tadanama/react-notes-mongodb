@@ -7,6 +7,13 @@
 	font-family: "Roboto", sans-serif;
 }
 
+/* Make the scroll appear all the time */
+/* To prevent the width from changing the viewport width when it appears */
+/* Header moves slightly to the left if when scrollbar appears */
+html{
+	overflow-y: scroll;
+}
+
 .container {
 	/* border: 2px solid red; */
 	max-width: 1536px;
