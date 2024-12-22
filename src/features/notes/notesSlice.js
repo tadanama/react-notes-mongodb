@@ -26,6 +26,17 @@ export const getAllNotes = createAsyncThunk("note/getAllNotes", async () => {
 	}
 });
 
+// Async thunk to create a note
+export const addNote = createAsyncThunk("note/addNote", async (newNote) => {
+	try {
+		const response = await axios.post(NOTE_URL, newNote);
+		// Send the newly created note to the fulfilled addNote reducer
+		return response.data.data;
+	} catch (error) {
+		console.log(error);
+	}
+});
+
 // Create a note slice
 // Part of the store that will store the note data
 export const noteSlice = createSlice({
@@ -43,6 +54,16 @@ export const noteSlice = createSlice({
 				state.notes = state.notes.concat(action.payload);
 			})
 			.addCase(getAllNotes.rejected, (state, action) => {
+				state.status = "failed";
+				state.error = action.error.message;
+			})
+			.addCase(addNote.pending, (state) => {
+				state.status = "loading";
+			})
+			.addCase(addNote.fulfilled, (state, action) => {
+				state.notes = [...state.notes, action.payload];
+			})
+			.addCase(addNote.rejected, (state, action) => {
 				state.status = "failed";
 				state.error = action.error.message;
 			});
