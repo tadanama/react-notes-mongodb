@@ -56,6 +56,9 @@ export const noteSlice = createSlice({
 	}, // Handle note async thunk
 });
 
+// Export notes array state selector
+export const selectAllNotes = (state) => state.note.notes;
+
 // Export the note slice reducer
 // To include in the store.js
 export default noteSlice.reducer;
