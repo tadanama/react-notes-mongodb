@@ -8,7 +8,7 @@
 .notes-container h2 {
 	margin-top: 10px;
 	margin-bottom: 50px;
-    text-align: center;
+	text-align: center;
 }
 
 .notes-grid-container {
@@ -19,11 +19,14 @@
 }
 
 .note-card {
-    padding: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 10px;
 	border-radius: 10px;
 	box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    transition: 0.3s;
-    cursor: pointer;
+	transition: 0.3s;
+	cursor: pointer;
 }
 
 .note-card h3,
@@ -32,17 +35,19 @@
 }
 
 .note-card p {
-    font-size: 15px;
+	flex-grow: 1;
+	/* border: 1px solid red; */
+	font-size: 15px;
 }
 
-.note-card:hover{
-    background-color: rgba(0, 0, 0, 0.05);
+.note-card:hover {
+	background-color: rgba(0, 0, 0, 0.05);
 }
 
 .note-card .bottom {
 	display: flex;
 	justify-content: space-between;
-    align-items: center;
+	align-items: center;
 }
 
 .note-card .bottom span {
@@ -52,18 +57,18 @@
 
 .note-card .bottom button.delete-icon {
 	padding: 5px 15px;
-    font-size: 14px;
-    border-radius: 5px;
-    background-color: transparent;
-    color: #f44336;
-    border: none;
-    cursor: pointer;
-    transition: 0.3s;
+	font-size: 14px;
+	border-radius: 5px;
+	background-color: transparent;
+	color: #f44336;
+	border: none;
+	cursor: pointer;
+	transition: 0.3s;
 }
 
-.note-card .bottom button.delete-icon:hover{
-    color: white;
-    background-color: #f44336;
+.note-card .bottom button.delete-icon:hover {
+	color: white;
+	background-color: #f44336;
 }
 
 /* event.stopPropogation() */
