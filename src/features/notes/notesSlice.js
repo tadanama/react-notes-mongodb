@@ -28,6 +28,7 @@ export const getAllNotes = createAsyncThunk("note/getAllNotes", async () => {
 
 // Async thunk to create a note
 export const addNote = createAsyncThunk("note/addNote", async (newNote) => {
+	// Send post request to backend
 	try {
 		const response = await axios.post(NOTE_URL, newNote);
 		// Send the newly created note to the fulfilled addNote reducer
@@ -61,6 +62,7 @@ export const noteSlice = createSlice({
 				state.status = "loading";
 			})
 			.addCase(addNote.fulfilled, (state, action) => {
+				state.status = "succeeded";
 				state.notes = [...state.notes, action.payload];
 			})
 			.addCase(addNote.rejected, (state, action) => {
