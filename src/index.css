@@ -21,6 +21,12 @@ html{
 	margin-inline: auto;
 }
 
+/* Remove link style */
+a {
+	color: black;
+	text-decoration: none;
+}
+
 /* Hide the nav links for screen smaller than 647px */
 @media (max-width: 647px) {
 	/* Stack the nav link list on top of each other */
