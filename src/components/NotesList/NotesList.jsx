@@ -34,31 +34,31 @@ function NotesList() {
 					<h2>My notes</h2>
 					<div className="notes-grid-container">
 						{allNotes?.map((note) => {
-							let showTitle;
-							let showDate;
+							// let showTitle;
+							// let showDate;
 
-							// Show only 20 character for the title
-							if (note?.title?.length > 20) {
-								showTitle = note?.title?.substring(0, 21) + "...";
-							} else {
-								showTitle = note?.title;
-							}
+							// // Show only 20 character for the title
+							// if (note?.title?.length > 20) {
+							// 	showTitle = note?.title?.substring(0, 21) + "...";
+							// } else {
+							// 	showTitle = note?.title;
+							// }
 
-							// Current date format : 2024-12-19T02:30:21.974Z
-							// Display only in format of: DD-MM-YYYY
-							const onlyDate = note?.updatedAt?.split("T")[0];
-							const splittedDate = onlyDate?.split("-");
-							const day = splittedDate[2];
-							const month = splittedDate[1];
-							const year = splittedDate[0];
-							showDate = `${day}/${month}/${year}`;
+							// // Current date format : 2024-12-19T02:30:21.974Z
+							// // Display only in format of: DD-MM-YYYY
+							// const onlyDate = note?.updatedAt?.split("T")[0];
+							// const splittedDate = onlyDate?.split("-");
+							// const day = splittedDate[2];
+							// const month = splittedDate[1];
+							// const year = splittedDate[0];
+							// showDate = `${day}/${month}/${year}`;
 
 							return (
 								<NoteItem
 									key={note._id}
 									note={note}
-									showTitle={showTitle}
-									showDate={showDate}
+									// showTitle={showTitle}
+									// showDate={showDate}
 								/>
 							);
 						})}
