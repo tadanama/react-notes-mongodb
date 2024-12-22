@@ -6,8 +6,7 @@ const NOTE_URL = "http://localhost:5000/api/notes";
 // Initialize the note slice state
 const initialState = {
 	notes: [], // All notes will be stored in an array
-	isLoading: false,
-	isError: false,
+	status: "loading", // "succeeded" || "failed"
 	error: null,
 };
 
@@ -17,13 +16,13 @@ export const getAllNotes = createAsyncThunk("note/getAllNotes", async () => {
 	try {
 		console.log("Inside getAllNotes asyncthunk try");
 		const response = await axios.get(`${NOTE_URL}/`);
-		console.log(response);
 
 		// Send the result from the request to the extra reducers
 		return response.data.data;
 	} catch (error) {
 		console.log("Inside getAllNotes asyncthunk catch");
-		console.error(error);
+		console.log("Error:", error.message);
+		return error.message;
 	}
 });
 
@@ -35,23 +34,17 @@ export const noteSlice = createSlice({
 	extraReducers(builder) {
 		builder
 			.addCase(getAllNotes.pending, (state, action) => {
-				state.isLoading = true;
+				state.status = "loading";
 			})
 			.addCase(getAllNotes.fulfilled, (state, action) => {
-				state.isLoading = false;
-
-				console.log("Inside getAllNotes fulfilled case");
-				console.log(action.payload);
+				state.status = "succeeded";
 
 				// Set the notes array initial state to the response from backend
-				state.notes = action.payload;
+				state.notes = state.notes.concat(action.payload);
 			})
 			.addCase(getAllNotes.rejected, (state, action) => {
-				state.isLoading = false;
-				state.isError = true;
-
-				console.log("Inside rejected getAllnotes");
-				console.log(action.payload);
+				state.status = "failed";
+				state.error = action.error.message;
 			});
 	}, // Handle note async thunk
 });
@@ -61,6 +54,9 @@ export const selectAllNotes = (state) => state.note.notes;
 
 // Export status state selector
 export const selectNoteStatus = (state) => state.note.status;
+
+// Export the error state selector
+export const selectNoteError = (state) => state.note.error;
 
 // Export the note slice reducer
 // To include in the store.js
