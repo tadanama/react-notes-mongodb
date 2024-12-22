@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import "./NotesList.css";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import {
 	selectAllNotes,
 	selectNoteError,
 	selectNoteStatus,
 } from "../../features/notes/notesSlice";
-import NoteItem from "./NoteItem";
+import NoteCard from "./NoteCard";
 
 function NotesList() {
 	// Get all notes from the redux store
@@ -54,12 +55,13 @@ function NotesList() {
 							// showDate = `${day}/${month}/${year}`;
 
 							return (
-								<NoteItem
-									key={note._id}
-									note={note}
-									// showTitle={showTitle}
-									// showDate={showDate}
-								/>
+								<Link to={`/note/${note._id}`} key={note._id}>
+									<NoteCard
+										note={note}
+										// showTitle={showTitle}
+										// showDate={showDate}
+									/>
+								</Link>
 							);
 						})}
 					</div>
