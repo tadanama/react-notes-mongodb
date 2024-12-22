@@ -2,7 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
-function NoteItem({ note }) {
+function NoteCard({ note }) {
 	let showTitle;
 	let showText;
 	let showDate;
@@ -44,4 +44,4 @@ function NoteItem({ note }) {
 	);
 }
 
-export default NoteItem;
+export default NoteCard;
