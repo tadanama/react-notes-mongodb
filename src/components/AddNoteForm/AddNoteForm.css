@@ -1,6 +1,6 @@
 /* Center the form */
 .add-form-container {
-	border: 1px solid blue;
+	/* border: 1px solid blue; */
 	padding: 30px 20px;
 	max-width: 50%;
 	margin-inline: auto;
