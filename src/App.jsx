@@ -16,7 +16,7 @@ function App() {
 
 						<Route path={"/note"}>
 							<Route index element={<AddNoteForm />} />
-							<Route path=":id" element={<EditNoteForm />} />
+							<Route path=":noteId" element={<EditNoteForm />} />
 						</Route>
 
 						<Route path="*" element={<h1>Page not found</h1>}/>
