@@ -30,11 +30,16 @@ function NotesList() {
 		if (allNotes.length === 0) {
 			content = <p>You have no notes</p>;
 		} else {
+			// Sort the notes
+			const sortedNote = allNotes?.slice().sort((a, b) =>
+				b.updatedAt.localeCompare(a.updatedAt)
+			);
+
 			content = (
 				<div className="notes-container">
 					<h2>My notes</h2>
 					<div className="notes-grid-container">
-						{allNotes?.map((note) => {
+						{sortedNote?.map((note) => {
 							// let showTitle;
 							// let showDate;
 
