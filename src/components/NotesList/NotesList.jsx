@@ -44,8 +44,8 @@ function NotesList() {
 				.sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
 
 			if (search) {
-				const filteredNote = sortedNote.filter((note) =>
-					note.title.toLowerCase().includes(search.toLowerCase())
+				const filteredNote = sortedNote?.filter((note) =>
+					note?.title.toLowerCase().includes(search.toLowerCase())
 				);
 
 				if (filteredNote.length === 0) {
@@ -56,7 +56,7 @@ function NotesList() {
 						<div className="notes-container">
 							<h2>My notes</h2>
 							<div className="notes-grid-container">
-								{filteredNote.map((matchedNote) => (
+								{filteredNote?.map((matchedNote) => (
 									<Link to={`/note/${matchedNote._id}`} key={matchedNote._id}>
 										<NoteCard note={matchedNote} />
 									</Link>
