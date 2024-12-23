@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const NOTE_URL = "http://localhost:5000/api/notes";
+// const NOTE_URL = "http://localhost:5000/api/notes";
+const NOTE_URL = "https://learn-mongodb-lkoz.onrender.com/api/notes";
 
 // Initialize the note slice state
 const initialState = {
