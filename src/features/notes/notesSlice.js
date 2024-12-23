@@ -38,6 +38,7 @@ export const addNote = createAsyncThunk("note/addNote", async (newNote) => {
 	}
 });
 
+// Async thunk to update a note
 export const updateNote = createAsyncThunk(
 	"note/updateNote",
 	async (updatedNote) => {
@@ -56,7 +57,22 @@ export const updateNote = createAsyncThunk(
 	}
 );
 
-//TODO: Async thunk to update a note
+// Async thunk to delete a note
+export const deleteNote = createAsyncThunk(
+	"note/deleteNote",
+	async (noteIdToDelete) => {
+		console.log("Note id to delete:", noteIdToDelete);
+		// Send delete request to backend
+		try {
+			const response = await axios.delete(`${NOTE_URL}/${noteIdToDelete}`);
+			console.log("Response from axios when delete:", response);
+			// Send the response from axios (data of the deleted note) to deleteNote fulfilled reducer
+			return response.data.data;
+		} catch (error) {
+			console.log(error);
+		}
+	}
+);
 
 // Create a note slice
 // Part of the store that will store the note data
@@ -109,6 +125,21 @@ export const noteSlice = createSlice({
 			.addCase(updateNote.rejected, (state) => {
 				state.status = "failed";
 				state.error = action.error.message;
+			})
+			.addCase(deleteNote.pending, (state) => {
+				state.status = "loading";
+			})
+			.addCase(deleteNote.fulfilled, (state, action) => {
+				state.status = "succeeded";
+
+				const filteredNote = state.notes.filter(
+					(note) => note._id !== action.payload._id
+				);
+
+				state.notes = filteredNote;
+			})
+			.addCase(deleteNote.rejected, (state, action) => {
+				state.status = "failed";
 			});
 	}, // Handle note async thunk
 });
