@@ -38,6 +38,26 @@ export const addNote = createAsyncThunk("note/addNote", async (newNote) => {
 	}
 });
 
+export const updateNote = createAsyncThunk(
+	"note/updateNote",
+	async (updatedNote) => {
+		// Send patch request to backend
+		try {
+			const response = await axios.patch(
+				`${NOTE_URL}/${updatedNote.id}`,
+				updatedNote
+			);
+			console.log("Response to update:", response);
+			// Send the response from axios to fulfilled updateNote reducer
+			return response.data.data;
+		} catch (error) {
+			console.log(error);
+		}
+	}
+);
+
+//TODO: Async thunk to update a note
+
 // Create a note slice
 // Part of the store that will store the note data
 export const noteSlice = createSlice({
@@ -68,6 +88,27 @@ export const noteSlice = createSlice({
 			.addCase(addNote.rejected, (state, action) => {
 				state.status = "failed";
 				state.error = action.error.message;
+			})
+			.addCase(updateNote.pending, (state) => {
+				state.status = "loading";
+			})
+			.addCase(updateNote.fulfilled, (state, action) => {
+				state.status = "succeeded";
+
+				console.log("Inside updateNote fulfilled");
+				console.log("Action payload:", action.payload);
+
+				// Filter out note that did not have the same id as the updated note
+				const otherNote = state.notes.filter(
+					(note) => note._id !== action.payload._id
+				);
+
+				// Combine the filtered note with the newly updated note
+				state.notes = [...otherNote, action.payload];
+			})
+			.addCase(updateNote.rejected, (state) => {
+				state.status = "failed";
+				state.error = action.error.message;
 			});
 	}, // Handle note async thunk
 });
@@ -80,6 +121,10 @@ export const selectNoteStatus = (state) => state.note.status;
 
 // Export the error state selector
 export const selectNoteError = (state) => state.note.error;
+
+// // Export selector to get notes by id
+// export const selectNoteById = (state, id) =>
+// 	state.note.notes.find(note._id === id);
 
 // Export the note slice reducer
 // To include in the store.js
