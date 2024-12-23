@@ -1,7 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useContext } from "react";
+import { SearchContext } from "../../App";
 import "./NotesList.css";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, renderMatches } from "react-router-dom";
 import {
 	selectAllNotes,
 	selectNoteError,
@@ -10,6 +11,9 @@ import {
 import NoteCard from "./NoteCard";
 
 function NotesList() {
+	// Get search state from the SearchContext with useContext
+	const { search } = useContext(SearchContext);
+
 	// Get all notes from the redux store
 	const allNotes = useSelector(selectAllNotes);
 	// console.log("Inside NoteList component");
@@ -39,43 +43,44 @@ function NotesList() {
 				?.slice()
 				.sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
 
-			content = (
-				<div className="notes-container">
-					<h2>My notes</h2>
-					<div className="notes-grid-container">
-						{sortedNote?.map((note) => {
-							// let showTitle;
-							// let showDate;
+			if (search) {
+				const filteredNote = sortedNote.filter((note) =>
+					note.title.toLowerCase().includes(search.toLowerCase())
+				);
 
-							// // Show only 20 character for the title
-							// if (note?.title?.length > 20) {
-							// 	showTitle = note?.title?.substring(0, 21) + "...";
-							// } else {
-							// 	showTitle = note?.title;
-							// }
-
-							// // Current date format : 2024-12-19T02:30:21.974Z
-							// // Display only in format of: DD-MM-YYYY
-							// const onlyDate = note?.updatedAt?.split("T")[0];
-							// const splittedDate = onlyDate?.split("-");
-							// const day = splittedDate[2];
-							// const month = splittedDate[1];
-							// const year = splittedDate[0];
-							// showDate = `${day}/${month}/${year}`;
-
-							return (
-								<Link to={`/note/${note._id}`} key={note._id}>
-									<NoteCard
-										note={note}
-										// showTitle={showTitle}
-										// showDate={showDate}
-									/>
-								</Link>
-							);
-						})}
+				if (filteredNote.length === 0) {
+					content = <h2 className="message">No items matched.</h2>;
+				} else {
+					console.log(filteredNote);
+					content = (
+						<div className="notes-container">
+							<h2>My notes</h2>
+							<div className="notes-grid-container">
+								{filteredNote.map((matchedNote) => (
+									<Link to={`/note/${matchedNote._id}`} key={matchedNote._id}>
+										<NoteCard note={matchedNote} />
+									</Link>
+								))}
+							</div>
+						</div>
+					);
+				}
+			} else {
+				content = (
+					<div className="notes-container">
+						<h2>My notes</h2>
+						<div className="notes-grid-container">
+							{sortedNote?.map((note) => {
+								return (
+									<Link to={`/note/${note._id}`} key={note._id}>
+										<NoteCard note={note} />
+									</Link>
+								);
+							})}
+						</div>
 					</div>
-				</div>
-			);
+				);
+			}
 		}
 	} else if (status === "failed") {
 		content = <h2>{error}</h2>;
