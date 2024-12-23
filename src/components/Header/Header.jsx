@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { SearchContext } from "../../App";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
@@ -8,7 +9,11 @@ function Header() {
 	// State to toggle display nav links
 	const [isOpen, setIsOpen] = useState(false);
 	// Search input state
-	const [search, setSearch] = useState("");
+	// const [search, setSearch] = useState("");
+
+	// Get the search useState hook through the SearchContext in App component
+	const { search, setSearch } = useContext(SearchContext);
+	console.log(search);
 
 	return (
 		<div className="header-container">
@@ -16,7 +21,7 @@ function Header() {
 			<input
 				type="text"
 				className="search-input"
-				placeholder="Search"
+				placeholder="Search by title"
 				value={search}
 				onChange={(e) => setSearch(e.target.value)}
 			/>
