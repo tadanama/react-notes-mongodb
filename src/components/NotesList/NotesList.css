@@ -74,7 +74,7 @@
 }
 
 .message {
-	border: 1px solid red;
+	/* border: 1px solid red; */
 	margin-top: 30px;
 	padding: 10px 20px;
 	text-align: center;
