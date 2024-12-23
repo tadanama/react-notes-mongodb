@@ -28,12 +28,16 @@ function NotesList() {
 		content = <h2>Loading...</h2>;
 	} else if (status === "succeeded") {
 		if (allNotes.length === 0) {
-			content = <p>You have no notes</p>;
+			content = (
+				<h2 className="message">
+					You have no notes. <Link to={"/note"}>Create one</Link>
+				</h2>
+			);
 		} else {
 			// Sort the notes
-			const sortedNote = allNotes?.slice().sort((a, b) =>
-				b.updatedAt.localeCompare(a.updatedAt)
-			);
+			const sortedNote = allNotes
+				?.slice()
+				.sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
 
 			content = (
 				<div className="notes-container">

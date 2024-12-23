@@ -73,4 +73,14 @@
 	background-color: #f44336;
 }
 
-/* event.stopPropogation() */
+.message {
+	border: 1px solid red;
+	margin-top: 30px;
+	padding: 10px 20px;
+	text-align: center;
+	opacity: 0.7;
+}
+
+.message a{
+	text-decoration: underline;
+}
