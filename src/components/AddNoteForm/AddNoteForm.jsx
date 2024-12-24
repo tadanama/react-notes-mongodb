@@ -37,7 +37,7 @@ function AddNoteForm() {
 				setContent("");
 
 				// Redirect user to the homepage (NotesList)
-				navigate("/");
+				navigate("/react-notes-mongodb");
 			} catch (error) {
 				console.log(error);
 				console.log(first);

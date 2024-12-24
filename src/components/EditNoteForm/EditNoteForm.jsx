@@ -42,7 +42,7 @@ function EditNoteForm() {
 				setContent("");
 
 				// Redirect to homepage
-				navigate("/");
+				navigate("/react-notes-mongodb");
 			} catch (error) {
 				console.log(error);
 			}
