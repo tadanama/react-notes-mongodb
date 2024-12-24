@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { selectAllNotes, updateNote } from "../../features/notes/notesSlice";
@@ -11,9 +11,6 @@ function EditNoteForm() {
 	const { noteId } = useParams();
 	// console.log(useParams());
 
-	// State to display error message
-	const [errorMessage, setErrorMessage] = useState("");
-
 	// Instantiate hook
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -25,6 +22,14 @@ function EditNoteForm() {
 	// Track title and content input state
 	const [title, setTitle] = useState(currentNote?.title);
 	const [content, setContent] = useState(currentNote?.text);
+
+	// State to display error message
+	const [errorMessage, setErrorMessage] = useState("");
+
+	// Set the error message to an empty string when user fill in the input
+	useEffect(() => {
+		setErrorMessage("");
+	}, [title, content]);
 
 	// Check if both input is filled in
 	const canEdit = Boolean(title) && Boolean(content);
@@ -50,7 +55,7 @@ function EditNoteForm() {
 				console.log(error);
 			}
 		} else {
-			setErrorMessage("Both fields are required")
+			setErrorMessage("Both fields are required");
 		}
 	}
 
