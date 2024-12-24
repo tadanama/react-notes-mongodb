@@ -14,26 +14,24 @@ function App() {
 	return (
 		<>
 			<SearchContext.Provider value={{ search, setSearch }}>
-				<BrowserRouter>
-					<div className="container">
-						<Header />
-						<Routes>
-							<Route path="/" element={<NotesList />} />
+				<div className="container">
+					<Header />
+					<Routes>
+						<Route path="/" element={<NotesList />} />
 
-							<Route path={"/note"}>
-								<Route index element={<AddNoteForm />} />
-								<Route path=":noteId" element={<EditNoteForm />} />
-							</Route>
+						<Route path={"/note"}>
+							<Route index element={<AddNoteForm />} />
+							<Route path=":noteId" element={<EditNoteForm />} />
+						</Route>
 
-							<Route path="*" element={<h1>Page not found</h1>} />
-						</Routes>
-						{/* <Routes>
+						<Route path="*" element={<h1>Page not found</h1>} />
+					</Routes>
+					{/* <Routes>
 						<Route path="/" element={<NotesList/>}/>
 						<Route path="/add" element={<AddNoteForm/>}/>
 						<Route path="/edit/:id" element={<EditNoteForm/>}/>
 					</Routes> */}
-					</div>
-				</BrowserRouter>
+				</div>
 			</SearchContext.Provider>
 		</>
 	);
