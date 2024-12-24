@@ -27,10 +27,10 @@ function Header() {
 			/>
 			<div className="nav-links">
 				<ul className={isOpen ? "active" : null}>
-					<Link to={"/note"}>
+					<Link to={"/react-notes-mongodb/note"}>
 						<li>Create note</li>
 					</Link>
-					<Link to={"/"}>
+					<Link to={"/react-notes-mongodb"}>
 						<li>My notes</li>
 					</Link>
 				</ul>

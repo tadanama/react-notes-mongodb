@@ -57,7 +57,7 @@ function NotesList() {
 							<h2>My notes</h2>
 							<div className="notes-grid-container">
 								{filteredNote?.map((matchedNote) => (
-									<Link to={`/note/${matchedNote._id}`} key={matchedNote._id}>
+									<Link to={`/react-notes-mongodb/note/${matchedNote._id}`} key={matchedNote._id}>
 										<NoteCard note={matchedNote} />
 									</Link>
 								))}
@@ -72,7 +72,7 @@ function NotesList() {
 						<div className="notes-grid-container">
 							{sortedNote?.map((note) => {
 								return (
-									<Link to={`/note/${note._id}`} key={note._id}>
+									<Link to={`/react-notes-mongodb/note/${note._id}`} key={note._id}>
 										<NoteCard note={note} />
 									</Link>
 								);
