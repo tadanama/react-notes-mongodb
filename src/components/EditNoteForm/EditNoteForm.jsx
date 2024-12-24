@@ -11,6 +11,9 @@ function EditNoteForm() {
 	const { noteId } = useParams();
 	// console.log(useParams());
 
+	// State to display error message
+	const [errorMessage, setErrorMessage] = useState("");
+
 	// Instantiate hook
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
@@ -46,6 +49,8 @@ function EditNoteForm() {
 			} catch (error) {
 				console.log(error);
 			}
+		} else {
+			setErrorMessage("Both fields are required")
 		}
 	}
 
@@ -77,6 +82,7 @@ function EditNoteForm() {
 						<FontAwesomeIcon icon={faFloppyDisk} />
 					</button>
 				</form>
+				{errorMessage && <p>{errorMessage}</p>}
 			</div>
 		</>
 	);
