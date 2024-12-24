@@ -48,7 +48,7 @@ function NoteCard({ note }) {
 			dispatch(deleteNote(note._id));
 
 			// Redirect back to homepage
-			navigate("/");
+			navigate("/react-notes-mongodb");
 		} catch (error) {
 			console.log(error);
 		}
