@@ -7,7 +7,7 @@ const NOTE_URL = "https://learn-mongodb-lkoz.onrender.com/api/notes";
 // Initialize the note slice state
 const initialState = {
 	notes: [], // All notes will be stored in an array
-	status: "loading", // "succeeded" || "failed"
+	status: "idle", // "succeeded" || "failed"
 	error: null,
 };
 
