@@ -15,13 +15,13 @@ const initialState = {
 export const getAllNotes = createAsyncThunk("note/getAllNotes", async () => {
 	// Send get request to get all notes from backend
 	try {
-		console.log("Inside getAllNotes asyncthunk try");
+		// console.log("Inside getAllNotes asyncthunk try");
 		const response = await axios.get(`${NOTE_URL}/`);
 
 		// Send the result from the request to the extra reducers
 		return response.data.data;
 	} catch (error) {
-		console.log("Inside getAllNotes asyncthunk catch");
+		// console.log("Inside getAllNotes asyncthunk catch");
 		console.log("Error:", error.message);
 		return error.message;
 	}
@@ -66,7 +66,7 @@ export const deleteNote = createAsyncThunk(
 		// Send delete request to backend
 		try {
 			const response = await axios.delete(`${NOTE_URL}/${noteIdToDelete}`);
-			console.log("Response from axios when delete:", response);
+			// console.log("Response from axios when delete:", response);
 			// Send the response from axios (data of the deleted note) to deleteNote fulfilled reducer
 			return response.data.data;
 		} catch (error) {
@@ -112,8 +112,8 @@ export const noteSlice = createSlice({
 			.addCase(updateNote.fulfilled, (state, action) => {
 				state.status = "succeeded";
 
-				console.log("Inside updateNote fulfilled");
-				console.log("Action payload:", action.payload);
+				// console.log("Inside updateNote fulfilled");
+				// console.log("Action payload:", action.payload);
 
 				// Filter out note that did not have the same id as the updated note
 				const otherNote = state.notes.filter(
